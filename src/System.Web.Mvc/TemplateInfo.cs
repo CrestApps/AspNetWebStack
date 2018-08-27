@@ -43,7 +43,7 @@ namespace System.Web.Mvc
         }
 
         public string GetFullHtmlFieldId(string partialFieldName)
-        {
+        {            
             return HtmlHelper.GenerateIdFromName(GetFullHtmlFieldName(partialFieldName));
         }
 
@@ -55,11 +55,9 @@ namespace System.Web.Mvc
                 // with a 'dot' would be invalid.
                 return HtmlFieldPrefix + partialFieldName;
             }
-            else
-            {
-                // This uses "combine and trim" because either or both of these values might be empty
-                return (HtmlFieldPrefix + "." + (partialFieldName ?? String.Empty)).Trim('.');
-            }
+            
+            // This uses "combine and trim" because either or both of these values might be empty
+            return (HtmlFieldPrefix + "." + (partialFieldName ?? String.Empty)).Trim('.');
         }
 
         public bool Visited(ModelMetadata metadata)
